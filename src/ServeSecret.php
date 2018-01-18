@@ -95,6 +95,4 @@ class ServeSecret extends Plugin
             __METHOD__
         );
     }
-
-
 }
