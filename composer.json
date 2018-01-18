@@ -1,0 +1,44 @@
+{
+    "name": "itscoding/serve-secret",
+    "description": "Serve password protected files",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "servesecret"
+    ],
+    "support": {
+        "docs": "https://github.com/boscho87/serve-secret/blob/master/README.md",
+        "issues": "https://github.com/boscho87/serve-secret/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simon Müller",
+            "homepage": "https://itscoding.ch"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "itscoding\\servesecret\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "ServeSecret",
+        "handle": "serve-secret",
+        "schemaVersion": "1.0.0",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/boscho87/serve-secret/master/CHANGELOG.md",
+        "components": {
+            "security": "itscoding\\servesecret\\services\\Security"
+        },
+        "class": "itscoding\\servesecret\\ServeSecret"
+    }
+}
