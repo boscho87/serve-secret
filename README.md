@@ -1,9 +1,13 @@
 # ServeSecret plugin for Craft CMS 3.x
 
+<img src="https://github.com/boscho87/serve-secret/blob/master/resources/img/icon.svg" width="150">
+
+___
+
 Serve files that are not Stored in public accessable Directories. e.g for Password Protected Areas. File links could and should not be shared!
 
 
-<img src="https://github.com/boscho87/serve-secret/blob/master/resources/img/icon.svg" width="48">
+
 
 
 ## Requirements
