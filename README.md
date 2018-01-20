@@ -6,15 +6,14 @@ ___
 
 Serve files that are not Stored in public accessable Directories. e.g for Password Protected Areas. File links could and should not be shared!
 
-
-
-
+The file links are decoded to hide the path from the user and to make the link only accessable for the current Session, so thats the reason why its not possible to share the links!
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0-beta.23 or later.
+This plugin requires Craft CMS 3.0.0 or later.
 
 ## Contribute to the Project
+
 if you want to help with this project, [read how to contribute](CONTRIBUTE.md)
 
 ## Installation
@@ -35,12 +34,19 @@ To install the plugin, follow these instructions.
 ## Using ServeSecret
 
 ![Screenshot](resources/img/volume.png)
-1. Crate a volume
 
-2. Add this to your template
+1. Crate a volume in craft (start with `@webroot` is recommended but it should work also with absolute paths
+
+2. Use it in your templates --> put your asset as an method argument!
+
 ```twig
-<-- just use the "secretFile" function and add the Asset Object into it -->
-<a href="{{ secretFile(entry.files.first()) }}">Download Secret File</a>
+
+<a href="{{ secretFile(entry.files.first()) }}">entry.files.first().title</a>
+
+{% for files in entry.files %}
+       <a href="{{ secretFile(file) }}">file.title</a>
+{% endfor %}
+
 ```
 
 ## ServeSecret Roadmap
