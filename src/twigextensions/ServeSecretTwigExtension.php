@@ -73,8 +73,8 @@ class ServeSecretTwigExtension extends \Twig_Extension
      * @param Asset $file
      * @return string
      */
-    public function secretFile(Asset $file)
+    public function secretFile(Asset $file, bool $inline = true)
     {
-        return ServeSecret::$plugin->security->getActionLink($file);
+        return ServeSecret::$plugin->security->getActionLink($file, $inline);
     }
 }
