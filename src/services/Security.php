@@ -62,10 +62,15 @@ class Security extends Component
      * @param $path
      * @return string
      */
-    public function getActionLink(Asset $file)
+    public function getActionLink(Asset $file, bool $inline)
     {
         $path = $this->createPath($file);
-        return $this->actionPath . '?' . http_build_query(['file_path' => $this->encryptPath($path), 'file_hash' => $this->getHash('file_hash')]);
+
+        return $this->actionPath . '?' . http_build_query([
+                'file_path' => $this->encryptPath($path),
+                'file_hash' => $this->getHash('file_hash'),
+                'file_inline' => (int)$inline,
+            ]);
     }
 
     /**
@@ -74,7 +79,8 @@ class Security extends Component
      */
     private function createPath(Asset $file)
     {
-        $path = $file->getVolume()->path . $file->filename;
+
+        $path = trim($file->getVolume()->path, '/') . '/' . trim($file->filename, '/');
         $path = str_replace('@webroot', $_SERVER['DOCUMENT_ROOT'], $path);
         return $path;
     }

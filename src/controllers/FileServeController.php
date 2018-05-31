@@ -65,7 +65,7 @@ class FileServeController extends Controller
         $file = ServeSecret::$plugin->security->decryptPath($path);
         if (file_exists($file)) {
             if (ServeSecret::$plugin->security->getHash('file_hash') == $hash) {
-                return Craft::$app->getResponse()->sendFile($file, null, ['inline' => true]);
+                return Craft::$app->getResponse()->sendFile($file, null, ['inline' => $inline]);
             }
             throw  new \Exception('you are not allowed to get the requested data');
         }

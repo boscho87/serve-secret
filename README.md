@@ -39,12 +39,13 @@ To install the plugin, follow these instructions.
 
 2. Use it in your templates --> put your asset as an method argument!
 
-```twig
 
-<a href="{{ secretFile(entry.files.first()) }}">entry.files.first().title</a>
+```twig
+# the second parameter is optional, if is set to true, the file will be shown in the browser
+<a href="{{ secretFile(entry.files.first(),true) }}">{{entry.files.first().title}}</a>
 
 {% for files in entry.files %}
-       <a href="{{ secretFile(file) }}">file.title</a>
+       <a href="{{ secretFile(file,true) }}">file.title</a>
 {% endfor %}
 
 ```
