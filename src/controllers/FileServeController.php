@@ -8,66 +8,124 @@
  * @copyright Copyright (c) 2018 Simon Müller
  */
 
-namespace itscoding\servesecret\controllers;
+namespace itscoding\servesecret\services;
 
-use craft\errors\FileException;
+use craft\elements\Asset;
 use itscoding\servesecret\ServeSecret;
 
 use Craft;
-use craft\web\Controller;
+use craft\base\Component;
 
 /**
- * FileServeController Controller
+ * Security Service
  *
- * Generally speaking, controllers are the middlemen between the front end of
- * the CP/website and your plugin’s services. They contain action methods which
- * handle individual tasks.
+ * All of your plugin’s business logic should go in services, including saving data,
+ * retrieving data, etc. They provide APIs that your controllers, template variables,
+ * and other plugins can interact with.
  *
- * A common pattern used throughout Craft involves a controller action gathering
- * post data, saving it on a model, passing the model off to a service, and then
- * responding to the request appropriately depending on the service method’s response.
- *
- * Action methods begin with the prefix “action”, followed by a description of what
- * the method does (for example, actionSaveIngredient()).
- *
- * https://craftcms.com/docs/plugins/controllers
+ * https://craftcms.com/docs/plugins/services
  *
  * @author    Simon Müller
  * @package   ServeSecret
  * @since     1.0.0
  */
-class FileServeController extends Controller
+class Security extends Component
 {
 
-    // Protected Properties
-    // =========================================================================
+    /**
+     * @var string
+     */
+    private $actionPath = '/actions/serve-secret/file-serve/get-secret-file';
+    /**
+     * @var string
+     */
+    private $encryptMethod = 'AES-256-CBC';
+    /**
+     * @var string
+     */
+    private $secretKey = '';
+    /**
+     * @var string
+     */
+    private $secretIv = 'generatedForSecurity';
+
 
     /**
-     * @var    bool|array Allows anonymous access to this controller's actions.
-     *         The actions must be in 'kebab-case'
-     * @access protected
+     *
      */
-    protected $allowAnonymous = ['get-secret-file'];
-
-    // Public Methods
-    // =========================================================================
-
-    /**
-     * @return \craft\web\Response|\yii\console\Response
-     * @throws FileException
-     * @throws \Exception
-     */
-    public function actionGetSecretFile()
+    public function init()
     {
-        $path = Craft::$app->request->get('file_path');
-        $hash = Craft::$app->request->get('file_hash');
-        $file = ServeSecret::$plugin->security->decryptPath($path);
-        if (file_exists($file)) {
-            if (ServeSecret::$plugin->security->getHash('file_hash') == $hash) {
-                return Craft::$app->getResponse()->sendFile($file);
-            }
-            throw  new \Exception('you are not allowed to get the requested data');
+        $this->secretKey = $this->getHash('secret_key');
+    }
+
+    /**
+     * @param $path
+     * @return string
+     */
+    public function getActionLink(Asset $file)
+    {
+        $path = $this->createPath($file);
+        return $this->actionPath . '?' . http_build_query(['file_path' => $this->encryptPath($path), 'file_hash' => $this->getHash('file_hash')]);
+    }
+
+    /**
+     * @param Asset $file
+     * @return mixed
+     */
+    private function createPath(Asset $file)
+    {
+
+        $path = trim($file->getVolume()->path, '/') . '/' . trim($file->filename, '/');
+        $path = str_replace('@webroot', $_SERVER['DOCUMENT_ROOT'], $path);
+        return $path;
+    }
+
+    /**
+     * @param $path
+     * @return string
+     */
+    public function encryptPath($path)
+    {
+        $key = hash('sha256', $this->secretKey);
+        // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+        $hashedIv = substr(hash('sha256', $this->secretIv), 0, 16);
+        $output = openssl_encrypt($path, $this->encryptMethod, $key, 0, $hashedIv);
+        $output = base64_encode($output);
+        return $output;
+    }
+
+    /**
+     * @param $path
+     * @return string
+     */
+    public function decryptPath($path)
+    {
+        $key = hash('sha256', $this->secretKey);
+        // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+        $hashedIv = substr(hash('sha256', $this->secretIv), 0, 16);
+        $output = openssl_decrypt(base64_decode($path), $this->encryptMethod, $key, 0, $hashedIv);
+        return $output;
+    }
+
+    /**
+     * @param string $type
+     * @return mixed|string
+     */
+    public function getHash(string $type)
+    {
+        if ($hash = Craft::$app->session->get($type)) {
+            return $hash;
         }
-        throw new FileException('the file you looking for could not be found by servesecret plugin');
+        $hash = $this->createHash();
+        Craft::$app->session->set($type, $hash);
+        return $hash;
+    }
+
+    /**
+     * @return string
+     */
+    private function createHash()
+    {
+        return base64_encode(bin2hex(random_bytes(16)));
     }
 }
