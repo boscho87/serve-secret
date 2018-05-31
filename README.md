@@ -41,8 +41,8 @@ To install the plugin, follow these instructions.
 
 
 ```twig
-# the second parameter is optional, if is set to true, the file will be shown in the browser
-<a href="{{ secretFile(entry.files.first(),true) }}">{{entry.files.first().title}}</a>
+# the second parameter is optional, if is set to false, the file will download the file instead of showing it, default value is true
+<a href="{{ secretFile(entry.files.first(),false) }}">{{entry.files.first().title}}</a>
 
 {% for files in entry.files %}
        <a href="{{ secretFile(file,true) }}">file.title</a>
