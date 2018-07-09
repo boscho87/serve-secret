@@ -79,8 +79,9 @@ class Security extends Component
      */
     private function createPath(Asset $file)
     {
-
-        $path = trim($file->getVolume()->path, '/') . '/' . trim($file->filename, '/');
+        $path = trim($file->getVolume()->path, '/')
+            . '/' . trim($file->folderPath . '/')
+            . '/' . trim($file->filename, '/');
         $path = str_replace('@webroot', $_SERVER['DOCUMENT_ROOT'], $path);
         return $path;
     }
