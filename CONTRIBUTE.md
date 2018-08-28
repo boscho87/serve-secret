@@ -1,4 +1,4 @@
-Contributing to FacebookConnector
+Contributing to ServeSecret
 =========================
 ## Bug Reports & Feature Requests
 Before submitting bug reports and feature requests, please search through [open issues](https://github.com/boscho87/server-secret/issues) to see if yours has already been filed.
