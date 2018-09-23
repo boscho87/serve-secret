@@ -59,3 +59,8 @@ Some things to do, and ideas for potential features:
 * Implement possibility to share the file-links
 
 Brought to you by [Simon Müller](https://itscoding.ch)
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/boscho87/serve-secret/badge.svg?style=beer-square)](https://beerpay.io/boscho87/serve-secret)  [![Beerpay](https://beerpay.io/boscho87/serve-secret/make-wish.svg?style=flat-square)](https://beerpay.io/boscho87/serve-secret?focus=wish)
