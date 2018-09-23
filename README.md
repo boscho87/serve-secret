@@ -2,8 +2,9 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/023ab9c270804de7a900d3dc9f305ca2)](https://www.codacy.com/app/boscho87/serve-secret?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=boscho87/serve-secret&amp;utm_campaign=Badge_Grade)
 
-<img src="https://github.com/boscho87/serve-secret/blob/master/resources/img/icon.svg" width="150">
+[![Beerpay](https://beerpay.io/boscho87/serve-secret/badge.svg)](https://beerpay.io/boscho87/serve-secret)
 
+<img src="https://github.com/boscho87/serve-secret/blob/master/resources/img/icon.svg" width="150">
 ___
 
 Serve files that are not Stored in public accessable Directories. e.g for Password Protected Areas. File links could and should not be shared!
