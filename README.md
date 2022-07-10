@@ -1,25 +1,29 @@
-# ServeSecret Craft CMS 3.x plugin
+# ServeSecret Craft CMS 4.x plugin
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/023ab9c270804de7a900d3dc9f305ca2)](https://www.codacy.com/app/boscho87/serve-secret?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=boscho87/serve-secret&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b1770367482b4ef48a2c3839b5cb881a)](https://www.codacy.com/gh/boscho87/serve-secret/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=boscho87/serve-secret&amp;utm_campaign=Badge_Grade)
 
-<img src="https://github.com/boscho87/serve-secret/blob/master/resources/img/icon.svg" width="150">
+<img src="resources/img/icon.svg" width="150">
 
+Spend
+--- 
+[Spend (to PayPal)](https://www.paypal.com/donate/?hosted_button_id=KS6KTZ6QJ8DBL)
 
-## Support on Beerpay
-Hey dude! Help me out for a couple of :beers:!
-
-[![Beerpay](https://beerpay.io/boscho87/serve-secret/badge.svg?style=beer-square)](https://beerpay.io/boscho87/serve-secret)  [![Beerpay](https://beerpay.io/boscho87/serve-secret/make-wish.svg?style=flat-square)](https://beerpay.io/boscho87/serve-secret?focus=wish)
-
+![QRCode (to PayPal)](.github/QR-Code.png)
 
 ___
 
-Serve files that are not Stored in public accessable Directories. e.g for Password Protected Areas. File links could and should not be shared!
+Serve files that are not Stored in public accessible Directories. e.g for Password-Protected Areas. File links could and should not be shared!
 
-The file links are decoded to hide the path from the user and to make the link only accessable for the current Session, so thats the reason why its not possible to share the links!
+The file links are decoded to hide the path from the user and to make the link only accessable for the current Session, so that's the reason why it's not possible to share the links!
+
+***Its not meant to store sensitive data that possibly not should be leaked.*** But data that should not be found by SearchEngines or something like a ranking in a pdf file etc.
+
+The links created by the plugin cannot be shared!
+
 
 ## Requirements
 
-This plugin requires Craft CMS 3.0.0 or later.
+This plugin requires Craft CMS 4.0.0 or later.
 
 ## Contribute to the Project
 
@@ -44,9 +48,11 @@ To install the plugin, follow these instructions.
 
 ![Screenshot](resources/img/volume.png)
 
-1. Crate a volume in craft (start with `@webroot` is recommended but it should work also with absolute paths
+1. Crate a volume in craft (start with `@serveSecret` is recommended but it should work also with other paths.
 
-2. Use it in your templates --> put your asset as an method argument!
+2. add `storage/secretStorage` to the gitignore dire if you use the @secretStorage alias.
+
+3. Use it in your templates --> put your asset as a method argument!
 
 
 ```twig
@@ -63,6 +69,6 @@ To install the plugin, follow these instructions.
 
 Some things to do, and ideas for potential features:
 
-* Implement possibility to share the file-links
+- Create sharable fileLinks 
 
 Brought to you by [Simon Müller](https://itscoding.ch)

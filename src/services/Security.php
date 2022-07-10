@@ -1,28 +1,12 @@
 <?php
-/**
- * ServeSecret plugin for Craft CMS 3.x
- *
- * Serve password protected files
- *
- * @link      https://itscoding.ch
- * @copyright Copyright (c) 2018 Simon Müller
- */
 
 namespace itscoding\servesecret\services;
 
 use craft\elements\Asset;
-use itscoding\servesecret\ServeSecret;
-
 use Craft;
 use craft\base\Component;
 
 /**
- * Security Service
- *
- * All of your plugin’s business logic should go in services, including saving data,
- * retrieving data, etc. They provide APIs that your controllers, template variables,
- * and other plugins can interact with.
- *
  * https://craftcms.com/docs/plugins/services
  *
  * @author    Simon Müller
@@ -31,93 +15,61 @@ use craft\base\Component;
  */
 class Security extends Component
 {
-
-    /**
-     * @var string
-     */
-    private $actionPath = '/actions/serve-secret/file-serve/get-secret-file';
-    /**
-     * @var string
-     */
-    private $encryptMethod = 'AES-256-CBC';
-    /**
-     * @var string
-     */
-    private $secretKey = '';
-    /**
-     * @var string
-     */
-    private $secretIv = 'generatedForSecurity';
+    private string $actionPath = '/actions/serve-secret/file-serve/get-secret-file';
+    private string $encryptMethod = 'AES-256-CBC';
+    private string $secretKey = '';
+    private string $secretIv = 'generatedForSecurity';
 
 
-    /**
-     *
-     */
-    public function init()
+    public function init(): void
     {
         $this->secretKey = $this->getHash('secret_key');
     }
 
-    /**
-     * @param $path
-     * @return string
-     */
-    public function getActionLink(Asset $file, bool $inline)
-    {
-        $path = $this->createPath($file);
 
+    public function getActionLink(Asset $file, bool $inline): string
+    {
         return $this->actionPath . '?' . http_build_query([
-                'file_path' => $this->encryptPath($path),
+                'file_path' => $this->createEncryptedHash($file),
                 'file_hash' => $this->getHash('file_hash'),
                 'file_inline' => (int)$inline,
             ]);
     }
 
-    /**
-     * @param Asset $file
-     * @return mixed
-     */
-    private function createPath(Asset $file)
+
+    public function createEncryptedHash(Asset $asset): string
     {
-        $path = trim($file->getVolume()->path, '/')
-            . '/' . trim($file->folderPath . '/')
-            . '/' . trim($file->filename, '/');
-        $path = str_replace('@webroot', $_SERVER['DOCUMENT_ROOT'], $path);
-        return $path;
+        return openssl_encrypt(
+            $this->createPath($asset),
+            $this->encryptMethod,
+            $this->getKey(),
+            0,
+            $this->getIv()
+        );
     }
 
-    /**
-     * @param $path
-     * @return string
-     */
-    public function encryptPath($path)
+    public function decryptPath(string $path): string
     {
-        $key = hash('sha256', $this->secretKey);
-        // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
-        $hashedIv = substr(hash('sha256', $this->secretIv), 0, 16);
-        $output = openssl_encrypt($path, $this->encryptMethod, $key, 0, $hashedIv);
-        $output = base64_encode($output);
-        return $output;
+        return openssl_decrypt(
+            $path,
+            $this->encryptMethod,
+            $this->getKey(),
+            0,
+            $this->getIv()
+        );
     }
 
-    /**
-     * @param $path
-     * @return string
-     */
-    public function decryptPath($path)
+    private function getIv(): string
     {
-        $key = hash('sha256', $this->secretKey);
-        // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
-        $hashedIv = substr(hash('sha256', $this->secretIv), 0, 16);
-        $output = openssl_decrypt(base64_decode($path), $this->encryptMethod, $key, 0, $hashedIv);
-        return $output;
+        return substr(hash('sha256', $this->secretIv), 0, 16);
     }
 
-    /**
-     * @param string $type
-     * @return mixed|string
-     */
-    public function getHash(string $type)
+    private function getKey(): string
+    {
+        return hash('sha256', $this->secretKey);
+    }
+
+    public function getHash(string $type): string
     {
         if ($hash = Craft::$app->session->get($type)) {
             return $hash;
@@ -127,11 +79,13 @@ class Security extends Component
         return $hash;
     }
 
-    /**
-     * @return string
-     */
-    private function createHash()
+    private function createHash(): string
     {
         return base64_encode(bin2hex(random_bytes(16)));
+    }
+
+    private function createPath(Asset $file): string
+    {
+        return $file->getFs()->getRootUrl() . $file->getPath();
     }
 }
