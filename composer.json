@@ -2,7 +2,7 @@
   "name": "itscoding/serve-secret",
   "description": "Serve password protected files",
   "type": "craft-plugin",
-  "version": "1.2.1",
+  "version": "2.0.0",
   "keywords": [
     "craft",
     "cms",
@@ -22,11 +22,11 @@
     }
   ],
   "require": {
-    "craftcms/cms": "^3.0.0-RC1"
+    "craftcms/cms": "^4.0.0",
   },
   "require-dev": {
-    "codacy/coverage": "dev-master",
-    "squizlabs/php_codesniffer": "^3.1"
+    "friendsofphp/php-cs-fixer": "^3.8",
+    "codacy/coverage": "dev-master"
   },
   "autoload": {
     "psr-4": {
@@ -44,5 +44,11 @@
       "security": "itscoding\\servesecret\\services\\Security"
     },
     "class": "itscoding\\servesecret\\ServeSecret"
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
   }
 }
