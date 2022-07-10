@@ -27,6 +27,7 @@ use yii\base\Event;
 class ServeSecret extends Plugin
 {
     public static ServeSecret $plugin;
+    public static $secretFileAlias = '@secretStorage';
 
     public function init(): void
     {
@@ -40,6 +41,11 @@ class ServeSecret extends Plugin
                 $event->rules['secretFileTrigger'] = 'serve-secret/file-serve/get-secret-file';
             }
         );
+
+        $rootDir = Craft::getAlias('@storage');
+        $path = $rootDir . '/secretStorage';
+        Craft::setAlias(self::$secretFileAlias, $path);
+
 
         Craft::info(
             Craft::t(

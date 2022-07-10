@@ -6,14 +6,20 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## Unreleased
 
+## 2.0.0 - 2022-07-10
+### Update
+- Update to Craft CMS 4
+- Code Style Updates
+- Added CS Fixer 
+
 ## 1.2.1 - 2018-07-09
 ### Fixed
-- Fixed a Bug, assets could not be stored in subfolder of the chossed asset
+- Fixed a Bug, assets could not be stored in sub folder of the chosen asset
 - Fixed issue #2
 - Fix Invalid Version
 
 ### Added
-- Added parameter to inline/donwload the file
+- Added parameter to inline/download the file
 
 ## 1.0.0 - 2018-01-18
 ### Added

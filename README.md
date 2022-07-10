@@ -2,7 +2,7 @@
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b1770367482b4ef48a2c3839b5cb881a)](https://www.codacy.com/gh/boscho87/serve-secret/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=boscho87/serve-secret&amp;utm_campaign=Badge_Grade)
 
-<img src="./resources/icon.svg" width="150">
+<img src="resources/img/icon.svg" width="150">
 
 Spend
 --- 
@@ -12,9 +12,14 @@ Spend
 
 ___
 
-Serve files that are not Stored in public accessable Directories. e.g for Password-Protected Areas. File links could and should not be shared!
+Serve files that are not Stored in public accessible Directories. e.g for Password-Protected Areas. File links could and should not be shared!
 
 The file links are decoded to hide the path from the user and to make the link only accessable for the current Session, so that's the reason why it's not possible to share the links!
+
+***Its not meant to store sensitive data that possibly not should be leaked.*** But data that should not be found by SearchEngines or something like a ranking in a pdf file etc.
+
+The links created by the plugin cannot be shared!
+
 
 ## Requirements
 
@@ -43,9 +48,11 @@ To install the plugin, follow these instructions.
 
 ![Screenshot](resources/img/volume.png)
 
-1. Crate a volume in craft (start with `@webroot` is recommended but it should work also with absolute paths
+1. Crate a volume in craft (start with `@serveSecret` is recommended but it should work also with other paths.
 
-2. Use it in your templates --> put your asset as an method argument!
+2. add `storage/secretStorage` to the gitignore dire if you use the @secretStorage alias.
+
+3. Use it in your templates --> put your asset as a method argument!
 
 
 ```twig
@@ -62,6 +69,6 @@ To install the plugin, follow these instructions.
 
 Some things to do, and ideas for potential features:
 
-* Implement possibility to share the file-links
+- Create sharable fileLinks 
 
 Brought to you by [Simon Müller](https://itscoding.ch)
