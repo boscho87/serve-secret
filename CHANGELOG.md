@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## Unreleased
 
+## 2.1.0 - 2022-07-18
+### Update
+- Previews now working in the CP
+
 ## 2.0.0 - 2022-07-10
 ### Update
 - Update to Craft CMS 4
@@ -26,6 +30,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Initial release
 
 
-[Unreleased] https://github.com/boscho87/serve-secret/compare/2.0.0...main
-[1.2.1] https://github.com/boscho87/serve-secret/compare/1.2.0...2.0.0
-[1.0.0] https://github.com/boscho87/serve-secret/compare/1.0.0...1.2.1
+[Unreleased] https://github.com/boscho87/serve-secret/compare/2.1.0...main
+[2.1.0] https://github.com/boscho87/serve-secret/compare/2.0.0...2.1.0
+[2.0.0] https://github.com/boscho87/serve-secret/compare/1.2.1...2.0.0
+[1.2.1] https://github.com/boscho87/serve-secret/compare/1.0.0...1.2.1
+[1.0.0] https://github.com/boscho87/serve-secret/tag/1.0.0

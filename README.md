@@ -4,17 +4,19 @@
 
 <img src="resources/img/icon.svg" width="150">
 
-Spend
+This Plugin is Free, but i'm happy if you want to Support my work!
 --- 
-[Spend (to PayPal)](https://www.paypal.com/donate/?hosted_button_id=KS6KTZ6QJ8DBL)
+[Spend (go to PayPal)](https://www.paypal.com/donate/?hosted_button_id=KS6KTZ6QJ8DBL)
 
-![QRCode (to PayPal)](.github/QR-Code.png)
+![QRCode (go to PayPal)](.github/QR-Code.png)
 
 ___
 
 Serve files that are not Stored in public accessible Directories. e.g for Password-Protected Areas. File links could and should not be shared!
 
-The file links are decoded to hide the path from the user and to make the link only accessable for the current Session, so that's the reason why it's not possible to share the links!
+The benefit of this is vs not having public Url's is you have a FilePreview in the CP even, the Files are not Public!
+
+The file links are decoded to hide the path from the user and to make the link only accessible for the current Session, so that's the reason why it's not possible to share the links!
 
 ***Its not meant to store sensitive data that possibly not should be leaked.*** But data that should not be found by SearchEngines or something like a ranking in a pdf file etc.
 
@@ -48,7 +50,7 @@ To install the plugin, follow these instructions.
 
 ![Screenshot](resources/img/volume.png)
 
-1. Crate a volume in craft (start with `@serveSecret` is recommended but it should work also with other paths.
+1. Crate a volume in craft that starts with `@secretStorage`.
 
 2. add `storage/secretStorage` to the gitignore dire if you use the @secretStorage alias.
 
