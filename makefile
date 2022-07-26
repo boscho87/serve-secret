@@ -1,5 +1,5 @@
-gitPush=/usr/local/bin/git-push
-gitDeleteBranches=/usr/local/bin/git-delete-branches
+gitPush=/usr/local/bin/push
+gitDeleteBranches=/usr/local/bin/delete-branches
 docIndexBin=/usr/local/bin/doc-index
 docFileIndex=/usr/local/bin/doc-file-index
 gitAddCommit=/usr/local/bin/commit
@@ -10,7 +10,7 @@ info:
 	echo "Installation successfully executed"
 	dev-tools-help
 install-git-push:
-	cp ./src/git-delete-branches.sh $(gitPush)
+	cp ./src/push.sh $(gitPush)
 	chown root $(gitPush)
 	chgrp root $(gitPush)
 	chmod 677 $(gitPush)

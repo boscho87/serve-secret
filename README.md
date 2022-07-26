@@ -13,7 +13,7 @@ Simple shell scripts that should help the h2g-devs to Create Doc Index, Simplify
     - [`dev-tools-help`](#dev-tools-help)
     - [`doc-index`](#doc-index)
     - [`doc-file-index`](#doc-file-index)
-    - [`git-delete-branches`](#git-delete-branches)
+    - [`delete-branches`](#delete-branches)
     - [`push`](#push)
     - [`commit`](#commit)
   - [Aliases](#aliases)
@@ -84,15 +84,15 @@ Usage:
 doc-file-index Readme.md
 ```
 
-### `git-delete-branches`
+### `delete-branches`
 
 Delete all but the Current git branch in a Project (does not execute git prune). 
 
 Usage:
 ```bash
-git-delete-branches 
+delete-branches 
 # will maybe often be used to cleanup local repos like:
-git-delete-branches &&  git remote prune origin
+delete-branches &&  git remote prune origin
 ```
 
 ### `push`
