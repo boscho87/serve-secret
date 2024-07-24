@@ -2,7 +2,6 @@
 
 namespace itscoding\servesecret\controllers;
 
-use craft\errors\FileException;
 use craft\web\Controller;
 use itscoding\servesecret\ServeSecret;
 use Craft;
@@ -22,7 +21,6 @@ class FileServeController extends Controller
         $inline = Craft::$app->request->get('file_inline');
 
         $file = ServeSecret::$plugin->security->decryptPath($path);
-
 
         if (file_exists($file)) {
             if (ServeSecret::$plugin->security->getHash('file_hash') == $hash) {
@@ -45,5 +43,5 @@ class FileServeController extends Controller
             'the file you looking for could not be found by servesecret plugin'
         );
     }
-
 }
+
