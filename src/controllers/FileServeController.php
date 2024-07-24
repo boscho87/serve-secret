@@ -37,11 +37,10 @@ class FileServeController extends Controller
     {
         $path = Craft::$app->request->getUrl();
         if (file_exists($path)) {
-            return Craft::$app->getResponse()->sendFile($path,null, ['inline' => true]);
+            return Craft::$app->getResponse()->sendFile($path, null, ['inline' => true]);
         }
         throw new UnsupportedMediaTypeHttpException(
             'the file you looking for could not be found by servesecret plugin'
         );
     }
 }
-
