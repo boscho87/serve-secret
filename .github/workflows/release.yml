@@ -20,6 +20,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Make update-composer-version.sh executable
+        run: chmod +x ./_ci/update-composer-version.sh
+
       - name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

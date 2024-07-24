@@ -12,13 +12,23 @@
       }
     ],
     [
-      "@semantic-release/github"
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "./_ci/update-composer-version.sh ${nextRelease.version}"
+      }
     ],
     [
       "@semantic-release/git",
       {
+        "assets": [
+          "composer.json",
+          "CHANGELOG.md"
+        ],
         "message": "chore(release): ${nextRelease.version} [skip ci]\\n\\n${nextRelease.notes}"
       }
+    ],
+    [
+      "@semantic-release/github"
     ]
   ]
 }
