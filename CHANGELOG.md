@@ -1,5 +1,12 @@
 # Serve Secret Changelog
 
+# [2.6.0](https://github.com/boscho87/serve-secret/compare/v2.5.0...v2.6.0) (2024-07-24)
+
+
+### Features
+
+* **translations:** remove Code comments and add German translations ([e54a4ab](https://github.com/boscho87/serve-secret/commit/e54a4ab05a0c19c5c505200ef45001caf4754f4b))
+
 # [2.5.0](https://github.com/boscho87/serve-secret/compare/v2.4.0...v2.5.0) (2024-07-24)
 
 
