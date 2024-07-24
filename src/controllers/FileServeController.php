@@ -26,11 +26,11 @@ class FileServeController extends Controller
             if (ServeSecret::$plugin->security->getHash('file_hash') == $hash) {
                 return Craft::$app->getResponse()->sendFile($file, null, ['inline' => $inline]);
             }
-            throw  new UnauthorizedHttpException('you are not allowed to get the requested data');
+            $message = Craft::t('not.allowed.to.get.requested.data');
+            throw  new UnauthorizedHttpException($message);
         }
-        throw new UnsupportedMediaTypeHttpException(
-            'the file you looking for could not be found by servesecret plugin'
-        );
+        $message = Craft::t('could.not.find.file.by.servesecret.plugin');
+        throw new UnsupportedMediaTypeHttpException($message);
     }
 
     public function actionGetSecretFileForCp(): Response
@@ -39,8 +39,7 @@ class FileServeController extends Controller
         if (file_exists($path)) {
             return Craft::$app->getResponse()->sendFile($path, null, ['inline' => true]);
         }
-        throw new UnsupportedMediaTypeHttpException(
-            'the file you looking for could not be found by servesecret plugin'
-        );
+        $message = Craft::t('could.not.find.file.by.servesecret.plugin');
+        throw new UnsupportedMediaTypeHttpException($message);
     }
 }

@@ -8,11 +8,6 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-/**
- * @author    Simon Müller
- * @package   ServeSecret
- * @since     1.0.0
- */
 class ServeSecretTwigExtension extends AbstractExtension
 {
     public function getName(): string
