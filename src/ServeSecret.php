@@ -2,13 +2,10 @@
 
 namespace itscoding\servesecret;
 
-use itscoding\servesecret\services\Security as SecurityService;
 use itscoding\servesecret\twigextensions\ServeSecretTwigExtension;
 
 use Craft;
 use craft\base\Plugin;
-use craft\services\Plugins;
-use craft\events\PluginEvent;
 use craft\web\UrlManager;
 use craft\events\RegisterUrlRulesEvent;
 
@@ -24,8 +21,12 @@ class ServeSecret extends Plugin
     {
         parent::init();
         self::$plugin = $this;
-        Craft::$app->view->registerTwigExtension(new ServeSecretTwigExtension());
 
+        if (Craft::$app->getRequest()->getIsConsoleRequest()) {
+            return;
+        }
+
+        Craft::$app->view->registerTwigExtension(new ServeSecretTwigExtension());
 
         $rootDir = Craft::getAlias('@root');
         $path = $rootDir . '/secretStorage';
@@ -42,7 +43,6 @@ class ServeSecret extends Plugin
                 }
             );
         }
-
 
         Event::on(
             UrlManager::class,
