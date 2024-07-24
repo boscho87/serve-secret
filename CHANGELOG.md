@@ -1,3 +1,12 @@
+# Serve Secret Changelog
+
+# [1.3.0](https://github.com/boscho87/serve-secret/compare/v1.2.0...v1.3.0) (2024-07-24)
+
+
+### Features
+
+* **security-service:** use new filesystem handling of craft ([17c8c87](https://github.com/boscho87/serve-secret/commit/17c8c87ee89b0ae19c0d7ba57d02682abceb1dc4))
+
 # ServeSecret Changelog
 
 All notable changes to this project will be documented in this file.
