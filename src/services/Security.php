@@ -7,13 +7,6 @@ use Craft;
 use craft\base\Component;
 use craft\fs\Local;
 
-/**
- * https://craftcms.com/docs/plugins/services
- *
- * @author    Simon Müller
- * @package   ServeSecret
- * @since     1.0.0
- */
 class Security extends Component
 {
     private string $actionPath = '/actions/serve-secret/file-serve/get-secret-file';
