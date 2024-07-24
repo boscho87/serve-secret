@@ -11,7 +11,6 @@ use craft\events\RegisterUrlRulesEvent;
 
 use yii\base\Event;
 
-
 class ServeSecret extends Plugin
 {
     public static ServeSecret $plugin;

@@ -7,7 +7,6 @@ use Craft;
 use craft\base\Component;
 use craft\fs\Local;
 
-
 /**
  * https://craftcms.com/docs/plugins/services
  *
@@ -86,7 +85,8 @@ class Security extends Component
         return base64_encode(bin2hex(random_bytes(16)));
     }
 
-    private function createPath(Asset $file): string {
+    private function createPath(Asset $file): string
+    {
         /** @var Local $fileSystem */
         $fileSystem = $file->getVolume()->getFs();
         // maybe throw an error if not found and handle it up the call stack?

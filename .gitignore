@@ -32,3 +32,5 @@ config.codekit3
 prepros-6.config
 tools/php-cs-fixer/vendor
 node_modules/
+tools/rector/vendor
+tools/phpstan/vendor
