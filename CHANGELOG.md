@@ -1,5 +1,13 @@
 # Serve Secret Changelog
 
+# [2.5.0](https://github.com/boscho87/serve-secret/compare/v2.4.0...v2.5.0) (2024-07-24)
+
+
+### Features
+
+* **craft-5:** fix Craft 5 Compatibility ([ebcf428](https://github.com/boscho87/serve-secret/commit/ebcf42837a6aec93533851befc49d589c74f8638))
+* **craft-5:** fix Craft 5 Compatibility ([797a93d](https://github.com/boscho87/serve-secret/commit/797a93d51ca8fa5ddde866d8706f52158b4625c1))
+
 # [2.4.0](https://github.com/boscho87/serve-secret/compare/v2.3.0...v2.4.0) (2024-07-24)
 
 
