@@ -1,0 +1,39 @@
+name: PHP Code Quality
+
+on:
+  push:
+    branches-ignore:
+      - main
+    tags-ignore:
+      - '*'
+  pull_request:
+    branches-ignore:
+      - main
+
+jobs:
+  php-quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Install PHP CS Fixer
+        run: composer install --working-dir=tools/php-cs-fixer
+
+      - name: Run PHP CS Fixer
+        run: ./_ci/cs_fixer.sh
+
+      # PHPStan does not stop on error, it's just for reporting
+      - name: Install PHPStan
+        run: composer install --working-dir=tools/phpstan
+
+      - name: Run PHPStan
+        run: ./tools/phpstan/vendor/bin/phpstan analyse src tests --level 7
+        continue-on-error: true
+
