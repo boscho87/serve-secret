@@ -1,5 +1,12 @@
 # Serve Secret Changelog
 
+# [2.4.0](https://github.com/boscho87/serve-secret/compare/v2.3.0...v2.4.0) (2024-07-24)
+
+
+### Features
+
+* Craft 5 support ([eded613](https://github.com/boscho87/serve-secret/commit/eded613e4d4cb6930f60cdebbf7373e9c3429a04))
+
 # [1.3.0](https://github.com/boscho87/serve-secret/compare/v1.2.0...v1.3.0) (2024-07-24)
 
 
