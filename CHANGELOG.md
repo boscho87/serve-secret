@@ -1,5 +1,15 @@
 # Serve Secret Changelog
 
+## 2.9.0 - 2024-07-25
+
+### Added
+
+- **release:** cleanup history ([6dae03e](https://github.com/boscho87/serve-secret/commit/6dae03e5fab2b80567c79cb002ab207db0431e5e))
+### Fixed
+
+- **changelog:** fix Changelog creator ([72b04fb](https://github.com/boscho87/serve-secret/commit/72b04fb7b60f9a64cbe6188360e20c1ab922898e))
+
+
 ## 2.8.1 - 2024-07-25
 
 ### Fixed
@@ -78,7 +88,8 @@
 - Initial release
 
 
-[Unreleased]: https://github.com/boscho87/serve-secret/compare/v2.8.1...main
+[Unreleased]: https://github.com/boscho87/serve-secret/compare/v2.9.0...main
+[2.9.0]: https://github.com/boscho87/serve-secret/compare/v2.8.1...v2.9.0
 [2.8.1]: https://github.com/boscho87/serve-secret/compare/v2.8.1...v2.8.1
 [2.8.1]: https://github.com/boscho87/serve-secret/compare/v2.8.0...v2.8.1
 [2.8.0]: https://github.com/boscho87/serve-secret/compare/v2.7.0...v2.8.0
