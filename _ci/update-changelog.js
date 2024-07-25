@@ -9,7 +9,8 @@ function updateChangelog() {
     let changelog = fs.readFileSync(changelogPath, 'utf8');
 
     // Entfernen aller bestehenden Linkblöcke
-    changelog = changelog.replace(/\[Unreleased\]\s\(https:.*\)/gs, '');
+    changelog = changelog.replace(/\[(Unreleased|\d+.\d+.\d+)\]:\shttps.*/gm, '');
+
 
     // Anpassung des regulären Ausdrucks für Versionseinträge (mit und ohne Links)
     const versionMatches = changelog.match(/## \[\d+\.\d+\.\d+\]\(https:\/\/github\.com\/[^/]+\/[^/]+\/compare\/v\d+\.\d+\.\d+\.\.\.v\d+\.\d+\.\d+\) \(\d{4}-\d{2}-\d{2}\)|## \d+\.\d+\.\d+ - \d{4}-\d{2}-\d{2}/g);
@@ -33,9 +34,9 @@ function updateChangelog() {
             const version = match.match(/\d+\.\d+\.\d+/)[0];
             const previousVersion = index < versionMatches.length - 1 ? versionMatches[index + 1].match(/\d+\.\d+\.\d+/)[0] : null;
             if (previousVersion) {
-                return `[${version}] (${repoUrl}/compare/v${previousVersion}...v${version})`;
+                return `[${version}]: ${repoUrl}/compare/v${previousVersion}...v${version}`;
             }
-            return `[${version}] (${repoUrl}/tag/v${version})`;
+            return `[${version}]: ${repoUrl}/tag/v${version}`;
         });
 
 
@@ -46,7 +47,7 @@ function updateChangelog() {
         changelog = changelog.replace(/\n(## )/gm, '\n\n$1')
 
 
-        const unreleasedLink = `[Unreleased] (${repoUrl}/compare/v${versionMatches[0].match(/\d+\.\d+\.\d+/)[0]}...main)`;
+        const unreleasedLink = `[Unreleased]: ${repoUrl}/compare/v${versionMatches[0].match(/\d+\.\d+\.\d+/)[0]}...main`;
 
         // Füge neuen Link-Block hinzu
         const newLinkBlock = `\n\n${unreleasedLink}\n${versionLinks.join('\n')}`;
