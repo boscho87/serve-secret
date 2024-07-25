@@ -1,11 +1,18 @@
 # Serve Secret Changelog
 
+## 2.9.1 - 2024-07-25
+
+### Fixed
+
+- **changelog:** cleanup the Changelog ([c8e2b29](https://github.com/boscho87/serve-secret/commit/c8e2b2951e2ca5b647f60fe86fa5696529e4134e))
+
 
 ## 2.3.0 - 2024-07-24
 
 ### Update
 
 - Update plugin to work with Craft ^5
+
 
 ## 2.2.0 - 2022-07-18
 
@@ -50,12 +57,8 @@
 - Initial release
 
 
-[Unreleased]: https://github.com/boscho87/serve-secret/compare/v2.9.0...main
-[2.9.0]: https://github.com/boscho87/serve-secret/compare/v2.8.1...v2.9.0
-[2.8.1]: https://github.com/boscho87/serve-secret/compare/v2.8.1...v2.8.1
-[2.8.1]: https://github.com/boscho87/serve-secret/compare/v2.8.0...v2.8.1
-[2.8.0]: https://github.com/boscho87/serve-secret/compare/v2.7.0...v2.8.0
-[2.7.0]: https://github.com/boscho87/serve-secret/compare/v2.3.0...v2.7.0
+[Unreleased]: https://github.com/boscho87/serve-secret/compare/v2.9.1...main
+[2.9.1]: https://github.com/boscho87/serve-secret/compare/v2.3.0...v2.9.1
 [2.3.0]: https://github.com/boscho87/serve-secret/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/boscho87/serve-secret/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/boscho87/serve-secret/compare/v2.0.0...v2.1.0
