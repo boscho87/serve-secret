@@ -40,11 +40,11 @@ function updateChangelog() {
         });
 
 
-        // Entfernen von Leerzeilen nach den Versionseinträgen
-        changelog = changelog.replace(/(^## \d+\.\d+\.\d+ - \d{4}-\d{2}-\d{2})\n\n/gm, '$1\n');
-        changelog = changelog.replace(/(^### .*)\n\n/gm, '$1\n')
-        changelog = changelog.replace(/(^- .*)\n\n/gm, '$1\n')
-        changelog = changelog.replace(/\n(## )/gm, '\n\n$1')
+        // Entfernen von Leerzeilen
+        changelog = changelog.replace(/(^## \d+\.\d+\.\d+ - \d{4}-\d{2}-\d{2})\n*/gm, '$1\n\n');
+        changelog = changelog.replace(/(^### .*)\n*/gm, '$1\n\n')
+        changelog = changelog.replace(/(^- .*)\n*/gm, '$1\n')
+        changelog = changelog.replace(/^\n*(## )/gm, '\n\n$1')
 
 
         const unreleasedLink = `[Unreleased]: ${repoUrl}/compare/v${versionMatches[0].match(/\d+\.\d+\.\d+/)[0]}...main`;
@@ -54,7 +54,8 @@ function updateChangelog() {
         changelog += newLinkBlock;
 
        changelog = changelog.replace(/^(# .*)\n*/gm,'$1\n\n') ;
-       changelog = changelog.replace(/(-\s.*)\n*(\[Unreleased\])/gm,'$1\n\n$2') ;
+       changelog = changelog.replace(/(-\s.*)\n*(\[Unreleased\])/gm,'$1\n\n\n$2') ;
+       console.log(changelog);
         fs.writeFileSync(changelogPath, changelog, 'utf8');
     }
 }

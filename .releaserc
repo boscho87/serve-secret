@@ -18,6 +18,7 @@
             { "type": "perf", "section": "Performance", "hidden": true },
             { "type": "test", "section": "Tests", "hidden": true },
             { "type": "chore", "section": "Chore", "hidden": true },
+            { "type": "ci", "section": "Chore", "hidden": true },
             { "type": "breaking", "section": "Breaking changes" }
           ]
         }
