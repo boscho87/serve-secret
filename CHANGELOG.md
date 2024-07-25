@@ -1,49 +1,11 @@
 # Serve Secret Changelog
 
-## 2.9.0 - 2024-07-25
-
-### Added
-
-- **release:** cleanup history ([6dae03e](https://github.com/boscho87/serve-secret/commit/6dae03e5fab2b80567c79cb002ab207db0431e5e))
-### Fixed
-
-- **changelog:** fix Changelog creator ([72b04fb](https://github.com/boscho87/serve-secret/commit/72b04fb7b60f9a64cbe6188360e20c1ab922898e))
-
-
-## 2.8.1 - 2024-07-25
-
-### Fixed
-
-- **changelog:** fix Changelog creator ([72b04fb](https://github.com/boscho87/serve-secret/commit/72b04fb7b60f9a64cbe6188360e20c1ab922898e))
-
-
-## 2.8.1 - 2024-07-25
-
-### Fixed
-
-- **changelog:** fix Changelog creator ([72b04fb](https://github.com/boscho87/serve-secret/commit/72b04fb7b60f9a64cbe6188360e20c1ab922898e))
-
-
-## 2.8.0 - 2024-07-25
-
-### Added
-
-- **changelog:** fix Changelog on Releases ([e19f65b](https://github.com/boscho87/serve-secret/commit/e19f65b6dd368f3c8a031c3d667fe609791833a4))
-
-
-## 2.7.0 - 2024-07-25
-
-### Added
-
-- **changelog:** upate changelog tooling ([67aa6d1](https://github.com/boscho87/serve-secret/commit/67aa6d1ac3f22e878ddf423ce2b4fe20940ea25f))
-
 
 ## 2.3.0 - 2024-07-24
 
 ### Update
 
-- Merge Bugfixes and Updates for new CraftCMS FileSystem
-
+- Update plugin to work with Craft ^5
 
 ## 2.2.0 - 2022-07-18
 
