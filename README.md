@@ -18,7 +18,7 @@ The benefit of this is vs not having public Url's is you have a FilePreview in t
 
 The file links are decoded to hide the path from the user and to make the link only accessible for the current Session, so that's the reason why it's not possible to share the links!
 
-***Its not meant to store sensitive data that possibly not should be leaked.*** But data that should not be found by SearchEngines or something like a ranking in a pdf file etc.
+***It's not meant to store sensitive data that possibly not should be leaked.*** But data that should not be found by SearchEngines or something like a ranking in a pdf file etc.
 
 The links created by the plugin cannot be shared!
 
