@@ -27,8 +27,8 @@ jobs:
       - name: Install jq
         run: sudo apt-get install -y jq
 
-      - name: Make update-composer-version.sh executable
-        run: chmod +x ./_ci/update-composer-version.sh
+      - name: Make ci files executable
+        run: chmod +x ./_ci/*
 
       - name: Run semantic-release
         env:

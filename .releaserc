@@ -32,7 +32,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "./_ci/update-composer-version.sh ${nextRelease.version}"
+        "prepareCmd": "./_ci/update-composer-version.sh ${nextRelease.version} && node ./_ci/update-changelog.js"
       }
     ],
     [
