@@ -42,7 +42,7 @@ function updateChangelog() {
 
         // Entfernen von Leerzeilen
         changelog = changelog.replace(/(^## \d+\.\d+\.\d+ - \d{4}-\d{2}-\d{2})\n*/gm, '$1\n\n');
-        changelog = changelog.replace(/(^### .*)\n*/gm, '$1\n\n')
+        changelog = changelog.replace(/(^### .*)\n*/gm, '$1\n')
         changelog = changelog.replace(/(^- .*)\n*/gm, '$1\n')
         changelog = changelog.replace(/^\n*(## )/gm, '\n\n$1')
 
