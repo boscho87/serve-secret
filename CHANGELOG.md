@@ -7,6 +7,13 @@
 - **changelog:** fix Changelog creator ([72b04fb](https://github.com/boscho87/serve-secret/commit/72b04fb7b60f9a64cbe6188360e20c1ab922898e))
 
 
+## 2.8.1 - 2024-07-25
+
+### Fixed
+
+- **changelog:** fix Changelog creator ([72b04fb](https://github.com/boscho87/serve-secret/commit/72b04fb7b60f9a64cbe6188360e20c1ab922898e))
+
+
 ## 2.8.0 - 2024-07-25
 
 ### Added
@@ -72,6 +79,7 @@
 
 
 [Unreleased]: https://github.com/boscho87/serve-secret/compare/v2.8.1...main
+[2.8.1]: https://github.com/boscho87/serve-secret/compare/v2.8.1...v2.8.1
 [2.8.1]: https://github.com/boscho87/serve-secret/compare/v2.8.0...v2.8.1
 [2.8.0]: https://github.com/boscho87/serve-secret/compare/v2.7.0...v2.8.0
 [2.7.0]: https://github.com/boscho87/serve-secret/compare/v2.3.0...v2.7.0
