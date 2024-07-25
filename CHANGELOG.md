@@ -1,5 +1,9 @@
 # Serve Secret Changelog
 
+## 2.8.1 - 2024-07-25
+### Fixed
+- **changelog:** fix Changelog creator ([72b04fb](https://github.com/boscho87/serve-secret/commit/72b04fb7b60f9a64cbe6188360e20c1ab922898e))
+
 ## 2.8.0 - 2024-07-25
 ### Added
 - **changelog:** fix Changelog on Releases ([e19f65b](https://github.com/boscho87/serve-secret/commit/e19f65b6dd368f3c8a031c3d667fe609791833a4))
@@ -39,7 +43,8 @@
 ### Added
 - Initial release
 
-[Unreleased]: https://github.com/boscho87/serve-secret/compare/v2.8.0...main
+[Unreleased]: https://github.com/boscho87/serve-secret/compare/v2.8.1...main
+[2.8.1]: https://github.com/boscho87/serve-secret/compare/v2.8.0...v2.8.1
 [2.8.0]: https://github.com/boscho87/serve-secret/compare/v2.7.0...v2.8.0
 [2.7.0]: https://github.com/boscho87/serve-secret/compare/v2.3.0...v2.7.0
 [2.3.0]: https://github.com/boscho87/serve-secret/compare/v2.2.0...v2.3.0
