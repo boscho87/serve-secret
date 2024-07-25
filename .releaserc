@@ -4,7 +4,25 @@
   ],
   "plugins": [
     "@semantic-release/commit-analyzer",
-    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/release-notes-generator",
+        {
+        "preset": "conventionalcommits",
+        "presetConfig": {
+          "types": [
+            { "type": "feat", "section": "Added" },
+            { "type": "fix", "section": "Fixed" },
+            { "type": "docs", "section": "Documentation", "hidden": true },
+            { "type": "style", "section": "Styles", "hidden": true },
+            { "type": "refactor", "section": "Refactored", "hidden": true },
+            { "type": "perf", "section": "Performance", "hidden": true },
+            { "type": "test", "section": "Tests", "hidden": true },
+            { "type": "chore", "section": "Chore", "hidden": true },
+            { "type": "breaking", "section": "Breaking changes" }
+          ]
+        }
+      }
+    ],
     [
       "@semantic-release/changelog",
       {
