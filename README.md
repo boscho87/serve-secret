@@ -1,4 +1,4 @@
-# ServeSecret Craft CMS 4.x plugin
+# ServeSecret Craft CMS plugin
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b1770367482b4ef48a2c3839b5cb881a)](https://www.codacy.com/gh/boscho87/serve-secret/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=boscho87/serve-secret&amp;utm_campaign=Badge_Grade)
 
@@ -25,7 +25,7 @@ The links created by the plugin cannot be shared!
 
 ## Requirements
 
-This plugin requires Craft CMS 4.0.0 or later.
+This plugin requires Craft CMS 4.0.0, 5.0.0, or 6.0.0 (and newer patch releases).
 
 ## Contribute to the Project
 

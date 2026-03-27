@@ -1,5 +1,11 @@
 # Serve Secret Changelog
 
+## 2.10.0 - 2026-03-27
+
+### Update
+- Prepare plugin compatibility constraints for Craft CMS ^6
+- Refresh requirements documentation to include Craft CMS 6
+
 ## 2.3.0 - 2024-07-24
 
 ### Update
