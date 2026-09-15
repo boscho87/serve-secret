@@ -2,44 +2,52 @@
 
 namespace itscoding\servesecret\controllers;
 
+use Craft;
 use craft\web\Controller;
 use itscoding\servesecret\ServeSecret;
-use Craft;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\web\UnauthorizedHttpException;
-use yii\web\UnsupportedMediaTypeHttpException;
 
 class FileServeController extends Controller
 {
     protected int|bool|array $allowAnonymous = ['get-secret-file'];
 
-
     public function actionGetSecretFile(): Response
     {
-        $path = Craft::$app->request->get('file_path');
-        $hash = Craft::$app->request->get('file_hash');
-        $inline = Craft::$app->request->get('file_inline');
+        $request = Craft::$app->request;
+        $pathToken = (string)$request->get('file_path', '');
+        $hash = (string)$request->get('file_hash', '');
+        $inline = filter_var($request->get('file_inline', false), FILTER_VALIDATE_BOOL);
 
-        $file = ServeSecret::$plugin->security->decryptPath($path);
-
-        if (file_exists($file)) {
-            if (ServeSecret::$plugin->security->getHash('file_hash') == $hash) {
-                return Craft::$app->getResponse()->sendFile($file, null, ['inline' => $inline]);
-            }
-            $message = Craft::t('not.allowed.to.get.requested.data');
-            throw  new UnauthorizedHttpException($message);
+        $expectedHash = ServeSecret::$plugin->security->getHash('file_hash');
+        if ($hash === '' || !hash_equals($expectedHash, $hash)) {
+            throw new UnauthorizedHttpException(Craft::t('serve-secret', 'Not allowed to get requested data.'));
         }
-        $message = Craft::t('could.not.find.file.by.servesecret.plugin');
-        throw new UnsupportedMediaTypeHttpException($message);
+
+        $decryptedPath = ServeSecret::$plugin->security->decryptPath($pathToken);
+        $file = $decryptedPath !== null
+            ? ServeSecret::$plugin->security->resolveAllowedPath($decryptedPath)
+            : null;
+
+        if ($file === null) {
+            throw new NotFoundHttpException(Craft::t('serve-secret', 'Could not find requested file.'));
+        }
+
+        return Craft::$app->getResponse()->sendFile($file, null, ['inline' => $inline]);
     }
 
     public function actionGetSecretFileForCp(): Response
     {
-        $path = Craft::$app->request->getUrl();
-        if (file_exists($path)) {
-            return Craft::$app->getResponse()->sendFile($path, null, ['inline' => true]);
+        $requestPath = rawurldecode(parse_url(Craft::$app->request->getUrl(), PHP_URL_PATH) ?? '');
+        $rootPath = Craft::getAlias(ServeSecret::$secretFileAlias);
+        $candidate = rtrim($rootPath, '/\\') . DIRECTORY_SEPARATOR . ltrim($requestPath, '/\\');
+        $file = ServeSecret::$plugin->security->resolveAllowedPath($candidate);
+
+        if ($file === null) {
+            throw new NotFoundHttpException(Craft::t('serve-secret', 'Could not find requested file.'));
         }
-        $message = Craft::t('could.not.find.file.by.servesecret.plugin');
-        throw new UnsupportedMediaTypeHttpException($message);
+
+        return Craft::$app->getResponse()->sendFile($file, null, ['inline' => true]);
     }
 }
