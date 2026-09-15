@@ -40,9 +40,7 @@ class FileServeController extends Controller
     public function actionGetSecretFileForCp(): Response
     {
         $requestPath = rawurldecode(parse_url(Craft::$app->request->getUrl(), PHP_URL_PATH) ?? '');
-        $rootPath = Craft::getAlias(ServeSecret::$secretFileAlias);
-        $candidate = rtrim($rootPath, '/\\') . DIRECTORY_SEPARATOR . ltrim($requestPath, '/\\');
-        $file = ServeSecret::$plugin->security->resolveAllowedPath($candidate);
+        $file = ServeSecret::$plugin->security->resolveAllowedPath($requestPath);
 
         if ($file === null) {
             throw new NotFoundHttpException(Craft::t('serve-secret', 'Could not find requested file.'));
