@@ -6,7 +6,7 @@
     "@semantic-release/commit-analyzer",
     [
       "@semantic-release/release-notes-generator",
-        {
+      {
         "preset": "conventionalcommits",
         "presetConfig": {
           "types": [
@@ -33,7 +33,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "./_ci/update-composer-version.sh ${nextRelease.version} && node ./_ci/update-changelog.js"
+        "prepareCmd": "./_ci/update-composer-version.sh ${nextRelease.version}"
       }
     ],
     [
@@ -46,8 +46,6 @@
         "message": "chore(release): ${nextRelease.version} [skip ci]\\n\\n${nextRelease.notes}"
       }
     ],
-    [
-      "@semantic-release/github"
-    ]
+    "@semantic-release/github"
   ]
 }
