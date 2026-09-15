@@ -1,5 +1,11 @@
 # Serve Secret Changelog
 
+## [2.9.3](https://github.com/boscho87/serve-secret/compare/v2.9.2...v2.9.3) (2026-09-15)
+
+### Fixed
+
+* **ci:** repair automated GitHub releases ([47cd4fd](https://github.com/boscho87/serve-secret/commit/47cd4fd5b27e208b28a7345f096bbdaef6d56467))
+
 ## 2.9.2 - 2026-09-15
 
 ### Fixed
